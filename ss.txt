@@ -1,0 +1,429 @@
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
+LISTEN   0      4096    0.0.0.0:443           0.0.0.0:*     users:(("docker-proxy",pid=2589,fd=7))
+LISTEN   0      128     0.0.0.0:25947         0.0.0.0:*     users:(("sshd",pid=575,fd=3))
+LISTEN   0      4096    0.0.0.0:81            0.0.0.0:*     users:(("docker-proxy",pid=2575,fd=7))
+LISTEN   0      4096    0.0.0.0:80            0.0.0.0:*     users:(("docker-proxy",pid=2551,fd=7))
+LISTEN   0      4096    0.0.0.0:5001          0.0.0.0:*     users:(("docker-proxy",pid=2658,fd=7))
+LISTEN   0      4096    0.0.0.0:9090          0.0.0.0:*     users:(("docker-proxy",pid=2260,fd=7))
+LISTEN   0      4096    0.0.0.0:8090          0.0.0.0:*     users:(("docker-proxy",pid=2964,fd=7))
+LISTEN   0      4096    0.0.0.0:3000          0.0.0.0:*     users:(("docker-proxy",pid=2867,fd=7))
+LISTEN   0      4096    0.0.0.0:3009          0.0.0.0:*     users:(("docker-proxy",pid=2709,fd=7))
+LISTEN   0      4096    0.0.0.0:8008          0.0.0.0:*     users:(("docker-proxy",pid=2617,fd=7))
+LISTEN   0      4096    0.0.0.0:8000          0.0.0.0:*     users:(("docker-proxy",pid=3006,fd=7))
+LISTEN   0      4096    0.0.0.0:32321         0.0.0.0:*     users:(("docker-proxy",pid=2801,fd=7))
+SYN-RECV 0      0      10.0.1.2:25947     38.54.59.59:52222
+LAST-ACK 0      33     10.0.1.2:25947  194.147.100.44:44378
+SYN-RECV 0      0      10.0.1.2:25947    38.54.45.156:58748
+ESTAB    0      88     10.0.1.2:25947 103.171.177.215:41521 users:(("sshd",pid=3061574,fd=4))
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59942
+SYN-RECV 0      0      10.0.1.2:25947   38.60.209.194:41150
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59756
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59854
+SYN-RECV 0      0      10.0.1.2:25947   43.130.151.11:55382
+SYN-RECV 0      0      10.0.1.2:25947   43.131.29.194:60560
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59798
+LAST-ACK 0      33     10.0.1.2:25947    23.225.146.6:51920
+SYN-RECV 0      0      10.0.1.2:25947 116.196.137.180:59896
+SYN-RECV 0      0      10.0.1.2:25947  106.225.223.67:49518
+LISTEN   0      4096       [::]:443              [::]:*     users:(("docker-proxy",pid=2597,fd=7))
+LISTEN   0      128        [::]:25947            [::]:*     users:(("sshd",pid=575,fd=4))
+LISTEN   0      4096       [::]:81               [::]:*     users:(("docker-proxy",pid=2583,fd=7))
+LISTEN   0      4096       [::]:80               [::]:*     users:(("docker-proxy",pid=2567,fd=7))
+LISTEN   0      4096       [::]:5001             [::]:*     users:(("docker-proxy",pid=2664,fd=7))
+LISTEN   0      4096       [::]:9090             [::]:*     users:(("docker-proxy",pid=2269,fd=7))
+LISTEN   0      4096       [::]:8090             [::]:*     users:(("docker-proxy",pid=2969,fd=7))
+LISTEN   0      4096          *:8080                *:*     users:(("per",pid=3093801,fd=3))
+LISTEN   0      4096       [::]:3000             [::]:*     users:(("docker-proxy",pid=2874,fd=7))
+LISTEN   0      4096       [::]:3009             [::]:*     users:(("docker-proxy",pid=2717,fd=7))
+LISTEN   0      4096       [::]:8008             [::]:*     users:(("docker-proxy",pid=2625,fd=7))
+LISTEN   0      4096       [::]:8000             [::]:*     users:(("docker-proxy",pid=3013,fd=7))
+LISTEN   0      4096       [::]:32321            [::]:*     users:(("docker-proxy",pid=2807,fd=7))
