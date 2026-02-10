@@ -19,8 +19,10 @@ import (
 
 const (
 	defaultInputPath      = "ss.txt"
+	defaultIPInputPath    = "ip.txt"
 	defaultGeodataDir     = "geodata"
-	defaultOutputPath     = "report.md"
+	defaultSSOutputPath   = "report-ss.md"
+	defaultIPOutputPath   = "report-ip.md"
 	defaultCountScope     = "peer"
 	defaultIncludePrivate = false
 	defaultTopN           = 20
@@ -30,14 +32,17 @@ const (
 var (
 	proxyPXRegex    = regexp.MustCompile(`PX(\d+)`)
 	locationDBRegex = regexp.MustCompile(`DB(\d+)`)
+	pidRegex        = regexp.MustCompile(`pid=(\d+)`)
 )
 
 type config struct {
 	inputPath       string
+	ipInputPath     string
 	geodataDir      string
 	proxyBinPath    string
 	locationBinPath string
-	outputPath      string
+	ssOutputPath    string
+	ipOutputPath    string
 	countScope      string
 	includePrivate  bool
 }
@@ -54,14 +59,23 @@ type queryIssue struct {
 }
 
 type parseStats struct {
-	totalLines  int
-	validIPHits int
-	uniqueIPs   int
-	issues      []parseIssue
+	totalLines      int
+	validIPHits     int
+	uniqueIPs       int
+	stateCounts     map[string]int
+	localPortCounts map[string]int
+	peerPortCounts  map[string]int
+	pidCounts       map[string]int
+	issues          []parseIssue
 }
 
 type ipCount struct {
 	ip    string
+	count int
+}
+
+type keyCount struct {
+	key   string
 	count int
 }
 
@@ -120,49 +134,74 @@ func main() {
 		exitWithErr(err)
 	}
 
-	counts, stats, parseIssues, err := parseSSFile(cfg)
+	ssCounts, ssStats, ssParseIssues, err := parseSSFile(cfg)
 	if err != nil {
 		exitWithErr(err)
 	}
-
-	items := sortedIPCounts(counts)
-
-	proxyRows := make([]proxyRow, 0)
-	locationRows := make([]locationRow, 0)
-	proxyIssues := make([]queryIssue, 0)
-	locationIssues := make([]queryIssue, 0)
-
-	if bins.proxyPath != "" {
-		proxyRows, proxyIssues, err = enrichWithIP2Proxy(items, bins.proxyPath)
-		if err != nil {
-			exitWithErr(err)
-		}
+	ssItems := sortedIPCounts(ssCounts)
+	ssProxyRows, ssLocationRows, ssProxyIssues, ssLocationIssues, err := enrichItems(ssItems, bins)
+	if err != nil {
+		exitWithErr(err)
 	}
-	if bins.locationPath != "" {
-		locationRows, locationIssues, err = enrichWithIP2Location(items, bins.locationPath)
-		if err != nil {
-			exitWithErr(err)
-		}
-	}
-
-	stats.uniqueIPs = len(items)
-	stats.issues = parseIssues
-
-	report := buildMarkdownReport(stats, items, proxyRows, locationRows, proxyIssues, locationIssues, cfg, bins)
-	if err := os.WriteFile(cfg.outputPath, []byte(report), 0644); err != nil {
-		exitWithErr(fmt.Errorf("写入报告失败: %w", err))
+	ssStats.uniqueIPs = len(ssItems)
+	ssStats.issues = ssParseIssues
+	ssReport := buildMarkdownReport(
+		ssStats,
+		ssItems,
+		ssProxyRows,
+		ssLocationRows,
+		ssProxyIssues,
+		ssLocationIssues,
+		cfg,
+		bins,
+		"SS 连接 IP 分析报告",
+		cfg.inputPath,
+		cfg.countScope,
+	)
+	if err := os.WriteFile(cfg.ssOutputPath, []byte(ssReport), 0644); err != nil {
+		exitWithErr(fmt.Errorf("写入 SS 报告失败: %w", err))
 	}
 
-	fmt.Printf("完成：已生成报告 %s\n", cfg.outputPath)
+	ipCounts, ipStats, ipParseIssues, err := parseIPFile(cfg)
+	if err != nil {
+		exitWithErr(err)
+	}
+	ipItems := sortedIPCounts(ipCounts)
+	ipProxyRows, ipLocationRows, ipProxyIssues, ipLocationIssues, err := enrichItems(ipItems, bins)
+	if err != nil {
+		exitWithErr(err)
+	}
+	ipStats.uniqueIPs = len(ipItems)
+	ipStats.issues = ipParseIssues
+	ipReport := buildMarkdownReport(
+		ipStats,
+		ipItems,
+		ipProxyRows,
+		ipLocationRows,
+		ipProxyIssues,
+		ipLocationIssues,
+		cfg,
+		bins,
+		"IP 清单分析报告",
+		cfg.ipInputPath,
+		"ip-file",
+	)
+	if err := os.WriteFile(cfg.ipOutputPath, []byte(ipReport), 0644); err != nil {
+		exitWithErr(fmt.Errorf("写入 IP 报告失败: %w", err))
+	}
+
+	fmt.Printf("完成：已生成报告 %s, %s\n", cfg.ssOutputPath, cfg.ipOutputPath)
 }
 
 func parseFlags() config {
 	var cfg config
 	flag.StringVar(&cfg.inputPath, "input", defaultInputPath, "ss 输出文件路径")
+	flag.StringVar(&cfg.ipInputPath, "ip-input", defaultIPInputPath, "IP 清单输入文件路径（每行 IP 或 IP:PORT）")
 	flag.StringVar(&cfg.geodataDir, "geodata-dir", defaultGeodataDir, "BIN 文件目录（自动识别 IP2Location/IP2Proxy）")
 	flag.StringVar(&cfg.proxyBinPath, "proxy-bin", "", "指定 IP2Proxy BIN 文件路径（可选）")
 	flag.StringVar(&cfg.locationBinPath, "location-bin", "", "指定 IP2Location BIN 文件路径（可选）")
-	flag.StringVar(&cfg.outputPath, "output", defaultOutputPath, "Markdown 报告输出路径")
+	flag.StringVar(&cfg.ssOutputPath, "ss-output", defaultSSOutputPath, "SS 分析 Markdown 报告输出路径")
+	flag.StringVar(&cfg.ipOutputPath, "ip-output", defaultIPOutputPath, "IP 清单分析 Markdown 报告输出路径")
 	flag.StringVar(&cfg.countScope, "count-scope", defaultCountScope, "统计范围: peer|local|all")
 	flag.BoolVar(&cfg.includePrivate, "include-private", defaultIncludePrivate, "是否包含私网/回环/链路本地地址")
 	flag.Parse()
@@ -174,6 +213,15 @@ func validateConfig(cfg config) error {
 	case "peer", "local", "all":
 	default:
 		return fmt.Errorf("无效的 --count-scope: %s (仅支持 peer|local|all)", cfg.countScope)
+	}
+	if strings.TrimSpace(cfg.ssOutputPath) == "" {
+		return fmt.Errorf("无效的 --ss-output: 不能为空")
+	}
+	if strings.TrimSpace(cfg.ipOutputPath) == "" {
+		return fmt.Errorf("无效的 --ip-output: 不能为空")
+	}
+	if filepath.Clean(cfg.ssOutputPath) == filepath.Clean(cfg.ipOutputPath) {
+		return fmt.Errorf("--ss-output 与 --ip-output 不能相同")
 	}
 	return nil
 }
@@ -324,7 +372,12 @@ func parseSSFile(cfg config) (map[string]int, parseStats, []parseIssue, error) {
 	defer file.Close()
 
 	counts := make(map[string]int)
-	var stats parseStats
+	stats := parseStats{
+		stateCounts:     make(map[string]int),
+		localPortCounts: make(map[string]int),
+		peerPortCounts:  make(map[string]int),
+		pidCounts:       make(map[string]int),
+	}
 	issues := make([]parseIssue, 0)
 
 	scanner := bufio.NewScanner(file)
@@ -335,6 +388,29 @@ func parseSSFile(cfg config) (map[string]int, parseStats, []parseIssue, error) {
 		stats.totalLines++
 		line := scanner.Text()
 		fields := strings.Fields(line)
+
+		if len(fields) > 0 {
+			state := strings.TrimSpace(fields[0])
+			if state != "" {
+				stats.stateCounts[state]++
+			}
+		}
+
+		for _, pid := range extractPIDs(line) {
+			stats.pidCounts[pid]++
+		}
+
+		if len(fields) >= 4 {
+			if port, ok := extractPort(fields[3]); ok {
+				stats.localPortCounts[port]++
+			}
+		}
+		if len(fields) >= 5 {
+			if port, ok := extractPort(fields[4]); ok {
+				stats.peerPortCounts[port]++
+			}
+		}
+
 		if len(fields) < 5 {
 			issues = append(issues, parseIssue{
 				line:    stats.totalLines,
@@ -364,6 +440,79 @@ func parseSSFile(cfg config) (map[string]int, parseStats, []parseIssue, error) {
 	}
 
 	return counts, stats, issues, nil
+}
+
+func parseIPFile(cfg config) (map[string]int, parseStats, []parseIssue, error) {
+	file, err := os.Open(cfg.ipInputPath)
+	if err != nil {
+		return nil, parseStats{}, nil, fmt.Errorf("读取 IP 输入文件失败 %s: %w", cfg.ipInputPath, err)
+	}
+	defer file.Close()
+
+	counts := make(map[string]int)
+	stats := parseStats{
+		stateCounts:     make(map[string]int),
+		localPortCounts: make(map[string]int),
+		peerPortCounts:  make(map[string]int),
+		pidCounts:       make(map[string]int),
+	}
+	issues := make([]parseIssue, 0)
+
+	scanner := bufio.NewScanner(file)
+	buf := make([]byte, 0, 64*1024)
+	scanner.Buffer(buf, 1024*1024)
+
+	for scanner.Scan() {
+		stats.totalLines++
+		line := strings.TrimSpace(scanner.Text())
+		if line == "" {
+			continue
+		}
+
+		token := strings.Fields(line)[0]
+		ip, ok := extractIP(token)
+		if !ok {
+			issues = append(issues, parseIssue{
+				line:    stats.totalLines,
+				reason:  "无法解析为 IP 或 IP:PORT",
+				content: line,
+			})
+			continue
+		}
+		if !cfg.includePrivate && shouldFilterPrivate(ip) {
+			continue
+		}
+		counts[ip.String()]++
+		stats.validIPHits++
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, parseStats{}, nil, fmt.Errorf("扫描 IP 输入文件失败: %w", err)
+	}
+
+	return counts, stats, issues, nil
+}
+
+func enrichItems(items []ipCount, bins selectedBins) ([]proxyRow, []locationRow, []queryIssue, []queryIssue, error) {
+	proxyRows := make([]proxyRow, 0)
+	locationRows := make([]locationRow, 0)
+	proxyIssues := make([]queryIssue, 0)
+	locationIssues := make([]queryIssue, 0)
+	var err error
+
+	if bins.proxyPath != "" {
+		proxyRows, proxyIssues, err = enrichWithIP2Proxy(items, bins.proxyPath)
+		if err != nil {
+			return nil, nil, nil, nil, err
+		}
+	}
+	if bins.locationPath != "" {
+		locationRows, locationIssues, err = enrichWithIP2Location(items, bins.locationPath)
+		if err != nil {
+			return nil, nil, nil, nil, err
+		}
+	}
+	return proxyRows, locationRows, proxyIssues, locationIssues, nil
 }
 
 func pickAddressTargets(local, peer, scope string) []string {
@@ -452,6 +601,76 @@ func sortedIPCounts(counts map[string]int) []ipCount {
 		return items[i].ip < items[j].ip
 	})
 	return items
+}
+
+func sortedKeyCounts(counts map[string]int) []keyCount {
+	items := make([]keyCount, 0, len(counts))
+	for key, count := range counts {
+		items = append(items, keyCount{key: key, count: count})
+	}
+	sort.Slice(items, func(i, j int) bool {
+		if items[i].count != items[j].count {
+			return items[i].count > items[j].count
+		}
+		return items[i].key < items[j].key
+	})
+	return items
+}
+
+func extractPort(endpoint string) (string, bool) {
+	endpoint = strings.TrimSpace(endpoint)
+	if endpoint == "" || endpoint == "*" {
+		return "", false
+	}
+	if strings.HasPrefix(endpoint, "[") {
+		idx := strings.Index(endpoint, "]")
+		if idx <= 1 {
+			return "", false
+		}
+		rest := endpoint[idx+1:]
+		if !strings.HasPrefix(rest, ":") {
+			return "", false
+		}
+		port := rest[1:]
+		if port == "*" || !isPortToken(port) {
+			return "", false
+		}
+		return port, true
+	}
+
+	lastColon := strings.LastIndex(endpoint, ":")
+	if lastColon <= 0 {
+		return "", false
+	}
+	port := endpoint[lastColon+1:]
+	if port == "*" || !isPortToken(port) {
+		return "", false
+	}
+	return port, true
+}
+
+func extractPIDs(line string) []string {
+	matches := pidRegex.FindAllStringSubmatch(line, -1)
+	if len(matches) == 0 {
+		return nil
+	}
+	seen := make(map[string]struct{}, len(matches))
+	pids := make([]string, 0, len(matches))
+	for _, m := range matches {
+		if len(m) < 2 {
+			continue
+		}
+		pid := strings.TrimSpace(m[1])
+		if pid == "" {
+			continue
+		}
+		if _, exists := seen[pid]; exists {
+			continue
+		}
+		seen[pid] = struct{}{}
+		pids = append(pids, pid)
+	}
+	return pids
 }
 
 func enrichWithIP2Proxy(items []ipCount, binPath string) ([]proxyRow, []queryIssue, error) {
@@ -595,15 +814,22 @@ func buildMarkdownReport(
 	locationIssues []queryIssue,
 	cfg config,
 	bins selectedBins,
+	reportTitle string,
+	inputPath string,
+	countScope string,
 ) string {
 	var b strings.Builder
 	now := time.Now().Format("2006-01-02 15:04:05 -0700 MST")
+	stateItems := sortedKeyCounts(stats.stateCounts)
+	localPortItems := sortedKeyCounts(stats.localPortCounts)
+	peerPortItems := sortedKeyCounts(stats.peerPortCounts)
+	pidItems := sortedKeyCounts(stats.pidCounts)
 
-	b.WriteString("# IP 连接分析报告\n\n")
+	b.WriteString(fmt.Sprintf("# %s\n\n", reportTitle))
 	b.WriteString(fmt.Sprintf("- 生成时间：%s\n", now))
-	b.WriteString(fmt.Sprintf("- 输入文件：`%s`\n", filepath.ToSlash(cfg.inputPath)))
+	b.WriteString(fmt.Sprintf("- 输入文件：`%s`\n", filepath.ToSlash(inputPath)))
 	b.WriteString(fmt.Sprintf("- BIN 目录：`%s`\n", filepath.ToSlash(cfg.geodataDir)))
-	b.WriteString(fmt.Sprintf("- 统计范围：`%s`\n", cfg.countScope))
+	b.WriteString(fmt.Sprintf("- 统计范围：`%s`\n", countScope))
 	b.WriteString(fmt.Sprintf("- 包含私网地址：`%t`\n", cfg.includePrivate))
 	if bins.proxyPath != "" {
 		b.WriteString(fmt.Sprintf("- Proxy BIN：`%s`\n", filepath.ToSlash(bins.proxyPath)))
@@ -622,6 +848,10 @@ func buildMarkdownReport(
 	b.WriteString(fmt.Sprintf("| 总行数 | %d |\n", stats.totalLines))
 	b.WriteString(fmt.Sprintf("| 有效 IP 次数 | %d |\n", stats.validIPHits))
 	b.WriteString(fmt.Sprintf("| 去重 IP 数 | %d |\n", stats.uniqueIPs))
+	b.WriteString(fmt.Sprintf("| 连接状态种类数 | %d |\n", len(stateItems)))
+	b.WriteString(fmt.Sprintf("| 本地端口种类数 | %d |\n", len(localPortItems)))
+	b.WriteString(fmt.Sprintf("| 对端端口种类数 | %d |\n", len(peerPortItems)))
+	b.WriteString(fmt.Sprintf("| PID 数 | %d |\n", len(pidItems)))
 	b.WriteString(fmt.Sprintf("| 解析失败行数 | %d |\n", len(stats.issues)))
 	b.WriteString(fmt.Sprintf("| Proxy 查询失败 IP 数 | %d |\n", len(proxyIssues)))
 	b.WriteString(fmt.Sprintf("| Location 查询失败 IP 数 | %d |\n\n", len(locationIssues)))
@@ -636,6 +866,60 @@ func buildMarkdownReport(
 	}
 	if top == 0 {
 		b.WriteString("| - | - | - |\n")
+	}
+	b.WriteString("\n")
+
+	b.WriteString("## 连接状态统计\n\n")
+	b.WriteString("| 状态 | 连接数 |\n")
+	b.WriteString("| --- | --- |\n")
+	if len(stateItems) == 0 {
+		b.WriteString("| - | - |\n")
+	} else {
+		for _, item := range stateItems {
+			b.WriteString(fmt.Sprintf("| %s | %d |\n", escapeMarkdown(item.key), item.count))
+		}
+	}
+	b.WriteString("\n")
+
+	b.WriteString(fmt.Sprintf("## 本地端口统计（Top %d）\n\n", defaultTopN))
+	b.WriteString("| 排名 | 本地端口 | 连接数 |\n")
+	b.WriteString("| --- | --- | --- |\n")
+	localTop := min(defaultTopN, len(localPortItems))
+	if localTop == 0 {
+		b.WriteString("| - | - | - |\n")
+	} else {
+		for i := 0; i < localTop; i++ {
+			item := localPortItems[i]
+			b.WriteString(fmt.Sprintf("| %d | %s | %d |\n", i+1, escapeMarkdown(item.key), item.count))
+		}
+	}
+	b.WriteString("\n")
+
+	b.WriteString(fmt.Sprintf("## 对端端口统计（Top %d）\n\n", defaultTopN))
+	b.WriteString("| 排名 | 对端端口 | 连接数 |\n")
+	b.WriteString("| --- | --- | --- |\n")
+	peerTop := min(defaultTopN, len(peerPortItems))
+	if peerTop == 0 {
+		b.WriteString("| - | - | - |\n")
+	} else {
+		for i := 0; i < peerTop; i++ {
+			item := peerPortItems[i]
+			b.WriteString(fmt.Sprintf("| %d | %s | %d |\n", i+1, escapeMarkdown(item.key), item.count))
+		}
+	}
+	b.WriteString("\n")
+
+	b.WriteString(fmt.Sprintf("## PID 统计（Top %d）\n\n", defaultTopN))
+	b.WriteString("| 排名 | PID | 连接数 |\n")
+	b.WriteString("| --- | --- | --- |\n")
+	pidTop := min(defaultTopN, len(pidItems))
+	if pidTop == 0 {
+		b.WriteString("| - | - | - |\n")
+	} else {
+		for i := 0; i < pidTop; i++ {
+			item := pidItems[i]
+			b.WriteString(fmt.Sprintf("| %d | %s | %d |\n", i+1, escapeMarkdown(item.key), item.count))
+		}
 	}
 	b.WriteString("\n")
 
